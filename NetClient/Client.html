@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="./Scripts/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+			$("#btnget").on('click', function () {
+                $.ajax({
+                    url: 'https://localhost:44304/api/Department',
+                    type:'GET'
+                }).done(function (resp) {
+                    alert('Received Data ' + JSON.stringify(resp));
+                }).fail(function (error) {
+                    alert('Error Occured ' + error.message);
+                });
+            });
+
+            class Department {
+                constructor() {
+                    this.DeptNo = 0;
+                    this.DeptName = "";
+                    this.Location = "";
+                }
+            }
+        });
+    </script>
+</head>
+<body>
+     <input type="button" value="get data" id="btnget"/>
+</body>
+</html>
